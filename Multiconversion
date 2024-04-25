@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversion</title>
+    <style>
+       
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            border-width: 10px;
+            border-color:aqua;
+            margin-top:100px;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 5px;
+        }
+        .btn {
+            display: inline-block;
+            background-color:#0056b3;
+            color:blanchedalmond;
+            padding: 10px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Centimeter to Meter Converter</h1>
+        <div class="input-group">
+            <label for="input">Input:</label>
+            <input type="number" id="input" placeholder="Enter value">
+        </div>
+        <div class="input-group">
+            <label for="fromUnit">From:</label>
+            <select id="fromUnit">
+                <option value="centimeters">Centimeters</option>
+                <option value="meters">Meters</option>
+                <option value="kilometers">Kilometers</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="toUnit">To:</label>
+            <select id="toUnit">
+                <option value="centimeters">Centimeters</option>
+                <option value="meters">Meters</option>
+                <option value="kilometers">Kilometers</option>
+            </select>
+        </div>
+        <button class="btn" onclick="convert()">Convert</button>
+        <div class="input-group">
+            <br><label for="output">Output:</label>
+            <input type="number" id="output" readonly>
+        </div>
+    </div>
+    <script>
+        function convert() {
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+            const value = parseFloat(document.getElementById('input').value);
+            let convertedValue;
+            if (fromUnit === 'centimeters' && toUnit === 'meters') {
+                convertedValue = value / 100;
+            } else if (fromUnit === 'centimeters' && toUnit === 'kilometers') {
+                convertedValue = value / 100000;
+             } else if (fromUnit === 'kilometers' && toUnit === 'meters') {
+                convertedValue = value * 1000;
+            } else {
+                
+                convertedValue = value;
+            }
+            document.getElementById('output').value = convertedValue;
+        }
+    </script>
+</body>
+</html>
